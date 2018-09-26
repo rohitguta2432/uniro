@@ -1,20 +1,14 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { User } from "./model/model.user";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  getUserDetails(username,password){
-
-    return this.http.post('/user/test',{
-      username,
-      password
-    }).subscribe(data=>{
-      console.log('response-data ' + data)
-    })
+  getUserDetails(user: User) {
+    return this.http.post("/user/test", user);
   }
 }
